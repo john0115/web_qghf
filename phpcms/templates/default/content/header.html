@@ -1,0 +1,26 @@
+<div class="header">
+    <div class="block_header">
+            <div class="logo"><a href="{siteurl($siteid)}"><img src="{IMG_PATH}logo.gif" width="340" height="112" border="0" alt="logo" style="margin-top:31px"/></a></div>
+      <div style="float:right;">
+        <div class="clr"></div>
+        <div class="menu">
+          <ul>
+		  {pc:content action="category" catid="0" num="25" siteid="$siteid" order="listorder ASC"}
+             {if $catid}<li><a href="{siteurl($siteid)}" ><span>首页</span></a></li>
+             {else}
+             <li><a href="{siteurl($siteid)}" class="active"><span>首页</span></a></li>
+             {/if}
+			{loop $data $r}
+            {if $r[catid]==$catid}
+			<li><a href="{$r[url]}" class="active"><span>{$r[catname]}</span></a></li>
+            {else}
+            <li><a href="{$r[url]}" ><span>{$r[catname]}</span></a></li>
+            {/if}
+			{/loop}
+          {/pc}
+        </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

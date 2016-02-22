@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{CSS_PATH}style.css" rel="stylesheet" type="text/css" />
+<link href="../../../../statics/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.js"></script>
+<script type="text/javascript" src="{JS_PATH}easySlider1.5.js"></script>
+<script type="text/javascript" charset="utf-8">
+// <![CDATA[
+$(document).ready(function(){	
+	$("#slider").easySlider({
+		controlsBefore:	'<p id="controls">',
+		controlsAfter:	'</p>',
+		auto: true, 
+		continuous: true
+	});	
+});
+// ]]>
+</script>
+<style type="text/css">
+#slider { margin:0; padding:1px; list-style:none; }
+#slider ul,
+#slider li { margin:0; padding:0; list-style:none; }
+/* 
+    define width and height of list item (slide)
+    entire slider area will adjust according to the parameters provided here
+*/
+#slider li { width:943px; height:323px; overflow:hidden; }
+p#controls { margin:0; position:relative; }
+#prevBtn,
+#nextBtn { display:block; margin:0; overflow:hidden;  position: absolute; left: -10px; top: -350px; }
+#nextBtn { left:470px; }
+#prevBtn a { display:block; width:480px; height:350px;}
+#nextBtn a { display:block; width:500px; height:350px;}
+</style>
+</head>
+<body>
+<div class="main">
+  {template "content","header"}
+  <div class="slider">
+    <div class="slice1">
+      <div class="slice2" id="slider">
+        <ul>
+             {pc:content  action="position" posid="2" order="listorder DESC" num="4"}
+        	 {loop $data $r}
+             <li>
+             <div>
+                        
+                <p class="img"><img src="{thumb($r[thumb],458,323)}" alt="{$r[title]}" width="458" height="323"/></p>
+              <h2><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+              <p><strong>{str_cut($r[description],245)}</strong><br />
+                <br />
+              </p>                
+             </div>
+                 </li>
+               {/loop}  
+             {/pc}   
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="body_resize">
+      <div class="Welcome">
+         {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="1"}
+         <div class="FocusPic">
+         {loop $data $r}
+                <h2><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
+       
+        <p><img src="{thumb($r['thumb'],214,177)}" alt="{$r['title']}" width="214" height="177" /></p>
+        <p>—— {str_cut($r[description],245)}</p>
+        <p>&nbsp;</p>
+         {/loop}
+         </div>
+        {/pc}
+               
+        
+      </div>
+      <div class="Box">
+        <h2>公告</h2>
+                        {pc:announce  action="lists" siteid="$siteid" num="2"}
+                <ul class="list lh24 f14">
+                   {loop $data $r}
+                     <li> <a href="{APP_PATH}index.php?m=announce&c=index&a=show&aid={$r['aid']}">{$r['title']}</a></li>
+                   {/loop}
+                </ul>
+                {/pc}
+        <div class="clr"></div>
+        <p>&nbsp;</p>
+        <h2>最新动态</h2>
+ 
+		{pc:content  action="lists"  catid="16"  order="inputtime DESC" num="2"} 
+           {loop $data $r}
+           <p><div style="overflow:hidden; float:left; background-image:url('{IMG_PATH}xxs_bg.jpg') no-repeat scroll 3px 0px transparent;"  width="20" height="20" style="margin-top:3px"></div><strong><a href="{$r['url']}" title="{str_cut($r['title'],30)}">{$r['title']}</a></strong><br />
+        </p>
+		
+           {/loop}
+        {/pc}
+ <p>&nbsp;</p>
+
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+   {template "content","footer"}
+</div>
+</body>
+</html>

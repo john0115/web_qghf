@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{CSS_PATH}style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="main">
+  {template "content","header"}
+  <div class="slider2">
+    <div class="top">
+      <h2><a href="{$CATEGORY[$catid][‘url’]}">{$CATEGORY[$catid]['catname']}</a></h2>
+     
+    </div>
+  </div>
+  <div class="body">
+    <div class="body_resize">
+      <div class=" main photo-channel">
+        <h2 class="crumbs"> {$catname}</h2>
+        <p> </p>
+       <!-- {pc:content action="lists" catid="$catid" num="5" order="id DESC" page="$page"}
+        {loop $data $r}
+        <div class="bloga">
+          <h4><a href="{$r[url]}" target="_blank"{title_style($r[style])}>{$r[title]}</a></h4>
+          <p>{str_cut($r[description],90)}</p>
+        </div>
+        {/loop}
+        <div id="pages" >{$pages}</div>
+        {/pc} 
+        -->
+        	{pc:content action="lists" catid="$catid" num="10" order="id DESC" page="$page"}
+		<ul class="photo-list picbig">
+			{loop $data $r}
+			<li>
+			<div class="img-wrap">
+			<a href="{$r[url]}"><img src="{thumb($r[thumb],150,112)}" width="150" height="112" alt="{$r[title]}"/></a>
+			</div>
+			<span style="color:{$r[style]}">{str_cut($r[title],28)}</span>
+			</li>
+			{/loop}
+		</ul>
+		<div id="pages" class="text-c">{$pages}</div>
+	{/pc}
+    
+        </div>
+      
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+  {template "content","footer"}
+</div>
+</body>
+</html>

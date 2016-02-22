@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{CSS_PATH}style.css" rel="stylesheet" type="text/css" />
+ <script language="javascript" src="{APP_PATH}caches/poster_js/10.js"></script>
+</head>
+<body>
+<div class="main">
+  {template "content","header"}
+  <div class="slider2">
+    <div class="top">
+      <h2><a href="{$CATEGORY[$catid][‘url’]}">{$CATEGORY[$catid]['catname']}</a></h2>
+      
+    </div>
+  </div>
+  <div class="body">
+    <div class="body_resize">
+      <div class="Welcome">
+        <h2> {$catname}</h2>
+        <p> </p>
+        {pc:content action="lists" catid="$catid" num="5" order="id DESC" page="$page"}
+        {loop $data $r}
+        <div class="bloga">
+          <h4><a href="{$r[url]}" target="_blank"{title_style($r[style])}>{$r[title]}</a></h4>
+          <p>{str_cut($r[description],6)}</p>
+        </div>
+        {/loop}
+        <div id="pages" >{$pages}</div>
+        {/pc} </div>
+      <div class="Box">
+        <h2>业务简介</h2>
+        <p class="clients"><br />
+                	<span class="block1">
+		 {pc:block pos="index_block_1"}{/pc}
+               </span>
+           <br />
+          <br />
+          <a href="#"><span>-{$SEO['site_title']}</span></a><br />
+          <br />
+          <br />
+        </p>
+        <h2> 联系方式</h2>
+        <p>{pc:block pos="index_block_2"}{/pc}</p>
+       
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+  {template "content","footer"}
+</div>
+</body>
+</html>
