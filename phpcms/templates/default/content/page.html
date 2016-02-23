@@ -39,9 +39,9 @@
  
 		{pc:content  action="lists"  catid="10"  order="inputtime DESC" num="2"} 
            {loop $data $r}
-           <p><strong><a href="{$r['url']}" title="{str_cut($r['title'],30)}">{$r['title']}</a></strong><br />
+           <p><div style="overflow:hidden; float:left; background-image:url({IMG_PATH}xxs_bg.jpg); background-repeat:no-repeat; margin-top:2px; width:18px; height:16px;"></div><strong><a href="{$r['url']}" title="{str_cut($r['title'],30)}">{$r['title']}</a></strong><br />
         </p>
-		<div class="bg"></div>
+		
            {/loop}
         {/pc}
  <p>&nbsp;</p>
