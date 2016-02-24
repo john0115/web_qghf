@@ -69,7 +69,7 @@ p#controls { margin:0; position:relative; }
   <div class="body">
     <div class="body_resize">
       <div class="Welcome">
-         {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="1"}
+         {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="2"}
          <div class="FocusPic">
          {loop $data $r}
                 <h2><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h2>
@@ -96,7 +96,7 @@ p#controls { margin:0; position:relative; }
         <p>&nbsp;</p>
         <h2>最新动态</h2>
  
-		{pc:content  action="lists"  catid="10"  order="inputtime DESC" num="2"} 
+		{pc:content  action="lists"  catid="16"  order="inputtime DESC" num="2"} 
            {loop $data $r}
            <p><div style="overflow:hidden; float:left; background-image:url({IMG_PATH}xxs_bg.jpg); background-repeat:no-repeat; margin-top:2px; width:18px; height:16px;"></div><strong><a href="{$r['url']}" title="{str_cut($r['title'],30)}">{$r['title']}</a></strong><br />
         </p>
